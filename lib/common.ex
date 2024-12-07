@@ -1,5 +1,12 @@
-defmodule Common do
+defmodule Point do
+  defstruct x: -1, y: -1
+end
 
+defmodule Grid do
+  defstruct width: -1, height: -1, map: %{}
+end
+
+defmodule Common do
   def open({:error, _msg}, _) do
     raise File.Error, message: "Could not open file."
   end
