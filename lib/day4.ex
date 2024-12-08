@@ -1,11 +1,3 @@
-defmodule Point do
-  defstruct x: -1, y: -1
-end
-
-defmodule Grid do
-  defstruct width: -1, height: -1, map: %{}
-end
-
 defmodule Day4 do
   require Logger
 

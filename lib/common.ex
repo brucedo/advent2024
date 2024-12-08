@@ -49,4 +49,17 @@ defmodule Common do
     lines = IO.stream(stream, :line) |> Enum.map(fn line -> String.trim(line, "\n") end)
     {:ok, stream, lines}
   end
+
+  @spec visualize_map(%{Point => any()}, fun(), integer(), integer()) :: list(list(String.t()))
+  def visualize_map(map, value_to_string, width, height) do
+    for row_index <- 0..(height - 1) do
+      visualize_line(map, value_to_string, row_index, width)
+    end
+  end
+
+  defp visualize_line(map, value_to_string, current_row, width) do
+    for column_index <- 0..(width - 1) do
+      Map.get(map, %Point{x: column_index, y: current_row}) |> value_to_string.()
+    end
+  end
 end
